@@ -1,6 +1,5 @@
 print("🔥 RUNNING THIS APP.PY FILE 🔥")
 import streamlit as st
-import tensorflow as tf
 import numpy as np
 import pickle
 import re
@@ -62,7 +61,19 @@ input {
 print("APP STARTED")  # confirm correct file
 
 # Load model
-model = tf.keras.models.load_model("chatbot_model.keras")
+def chatbot_reply(text):
+    text = text.lower()
+
+    if "hi" in text:
+        return "hello 👋"
+    elif "how are you" in text:
+        return "I am fine 😊"
+    elif "name" in text:
+        return "I am an AI chatbot 🤖"
+    elif "bye" in text:
+        return "Goodbye 👋"
+    else:
+        return "I don't understand 😅"
 
 # Load tokenizer
 with open("tokenizer.pkl", "rb") as f:
